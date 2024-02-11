@@ -13,7 +13,7 @@
     
     
       
-        <title>Probe calibration - Klipper documentation</title>
+        <title>PID - Klipper documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#probe-calibration" class="md-skip">
+        <a href="#pid" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Probe calibration
+              PID
             
           </span>
         </div>
@@ -381,14 +381,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
       
       
@@ -498,14 +496,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_4" type="checkbox" id="__nav_7_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_4" type="checkbox" id="__nav_7_4" >
       
       
       
@@ -554,80 +550,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Probe calibration
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="Probe_Calibrate.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="Probe_Calibrate.html" class="md-nav__link">
         Probe calibration
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#calibrating-probe-x-and-y-offsets" class="md-nav__link">
-    Calibrating probe X and Y offsets
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#calibrating-probe-z-offset" class="md-nav__link">
-    Calibrating probe Z offset
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#repeatability-check" class="md-nav__link">
-    Repeatability check
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#location-bias-check" class="md-nav__link">
-    Location Bias Check
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#temperature-bias" class="md-nav__link">
-    Temperature Bias
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1340,37 +1267,77 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#calibrating-probe-x-and-y-offsets" class="md-nav__link">
-    Calibrating probe X and Y offsets
+  <a href="#pid-calibration" class="md-nav__link">
+    PID Calibration
+  </a>
+  
+    <nav class="md-nav" aria-label="PID Calibration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preparing-the-calibration" class="md-nav__link">
+    Preparing the Calibration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#choosing-the-right-pid-algorithm" class="md-nav__link">
+    Choosing the right PID Algorithm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-the-pid-calibration" class="md-nav__link">
+    Running the PID Calibration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-manual-calibration" class="md-nav__link">
+    Advanced / Manual Calibration
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#calibrating-probe-z-offset" class="md-nav__link">
-    Calibrating probe Z offset
+  <a href="#further-readings" class="md-nav__link">
+    Further Readings
+  </a>
+  
+    <nav class="md-nav" aria-label="Further Readings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#history" class="md-nav__link">
+    History
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#repeatability-check" class="md-nav__link">
-    Repeatability check
+        
+          <li class="md-nav__item">
+  <a href="#details-of-the-relay-test" class="md-nav__link">
+    Details of the Relay Test
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#location-bias-check" class="md-nav__link">
-    Location Bias Check
+        
+          <li class="md-nav__item">
+  <a href="#pid-control-algorithms" class="md-nav__link">
+    Pid Control Algorithms
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#temperature-bias" class="md-nav__link">
-    Temperature Bias
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1386,182 +1353,170 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/Klipper3d/klipper/blob/master/docs/Probe_Calibrate.md" title="Edit this page" class="md-content__button md-icon">
+<a href="https://github.com/Klipper3d/klipper/blob/master/docs/PID.md" title="Edit this page" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
-<h1 id="probe-calibration">Probe calibration<a class="headerlink" href="#probe-calibration" title="Permanent link">&para;</a></h1>
-<p>This document describes the method for calibrating the X, Y, and Z
-offsets of an "automatic z probe" in Klipper. This is useful for users
-that have a <code>[probe]</code> or <code>[bltouch]</code> section in their config file.</p>
-<h2 id="calibrating-probe-x-and-y-offsets">Calibrating probe X and Y offsets<a class="headerlink" href="#calibrating-probe-x-and-y-offsets" title="Permanent link">&para;</a></h2>
-<p>To calibrate the X and Y offset, navigate to the OctoPrint "Control"
-tab, home the printer, and then use the OctoPrint jogging buttons to
-move the head to a position near the center of the bed.</p>
-<p>Place a piece of blue painters tape (or similar) on the bed underneath
-the probe. Navigate to the OctoPrint "Terminal" tab and issue a PROBE
-command:</p>
-<div class="highlight"><pre><span></span><code>PROBE
+<h1 id="pid">PID<a class="headerlink" href="#pid" title="Permanent link">&para;</a></h1>
+<p>PID control is a widely used control method in the 3D printing world.
+It’s ubiquitous when it comes to temperature control, be it with heaters to
+generate heat or fans to remove heat. This document aims to provide a
+high-level overview of what PID is and how to use it best in Klipper.</p>
+<h2 id="pid-calibration">PID Calibration<a class="headerlink" href="#pid-calibration" title="Permanent link">&para;</a></h2>
+<h3 id="preparing-the-calibration">Preparing the Calibration<a class="headerlink" href="#preparing-the-calibration" title="Permanent link">&para;</a></h3>
+<p>When a calibration test is performed external influences should be minimized as
+much as possible:</p>
+<ul>
+<li>Turn off fans</li>
+<li>Turn off chamber heaters</li>
+<li>Turn off the extruder heater when calibrating the bed and vice versa</li>
+<li>Avoid external disturbances like drafts etc</li>
+</ul>
+<h3 id="choosing-the-right-pid-algorithm">Choosing the right PID Algorithm<a class="headerlink" href="#choosing-the-right-pid-algorithm" title="Permanent link">&para;</a></h3>
+<p>Klipper offers two different PID algorithms: Positional and Velocity</p>
+<ul>
+<li>Positional (<code>pid</code>)
+    * The standard algorithm
+    * Very robust against noisy temperature readings
+    * Can cause overshoots
+    * Insufficient target control in edge cases</li>
+<li>Velocity (<code>pid_v</code>)
+    * No overshoot
+    * Better target control in certain scenarios
+    * More susceptible to noisy sensors
+    * Might require larger smoothing time constants</li>
+</ul>
+<p>Refer to the <a href="Config_Reference.html#extruder">control statement</a> in the
+Configuration Reference.</p>
+<h3 id="running-the-pid-calibration">Running the PID Calibration<a class="headerlink" href="#running-the-pid-calibration" title="Permanent link">&para;</a></h3>
+<p>The PID calibration is invoked via the <a href="G-Codes.html#pid_calibrate">PID_CALIBRATE</a> command.
+This command will heat up the respective  heater and let it cool down around
+the target temperature in multiple cycles to determine the needed
+parameters.</p>
+<p>Such a calibration cycles looks like the following snippet:</p>
+<div class="highlight"><pre><span></span><code>3:12 PM   PID_CALIBRATE HEATER=extruder TARGET=220 TOLERANCE=0.01 WRITE_FILE=1
+3:15 PM   sample:1 pwm:1.0000 asymmetry:3.7519 tolerance:n/a
+3:15 PM   sample:2 pwm:0.6229 asymmetry:0.3348 tolerance:n/a
+3:16 PM   sample:3 pwm:0.5937 asymmetry:0.0840 tolerance:n/a
+3:17 PM   sample:4 pwm:0.5866 asymmetry:0.0169 tolerance:0.4134
+3:18 PM   sample:5 pwm:0.5852 asymmetry:0.0668 tolerance:0.0377
+3:18 PM   sample:6 pwm:0.5794 asymmetry:0.0168 tolerance:0.0142
+3:19 PM   sample:7 pwm:0.5780 asymmetry:-0.1169 tolerance:0.0086
+3:19 PM   PID parameters: pid_Kp=16.538 pid_Ki=0.801 pid_Kd=85.375
+               The SAVE_CONFIG command will update the printer config file
+               with these parameters and restart the printer.
 </code></pre></div>
 
-<p>Place a mark on the tape directly under where the probe is (or use a
-similar method to note the location on the bed).</p>
-<p>Issue a <code>GET_POSITION</code> command and record the toolhead XY location
-reported by that command. For example if one sees:</p>
-<div class="highlight"><pre><span></span><code>Recv: // toolhead: X:46.500000 Y:27.000000 Z:15.000000 E:0.000000
+<p>Note the <code>asymmetry</code> information. It provides an indication if the heater's
+power is sufficient to ensure a symmetrical "heat up" versus "cool down /
+heat loss" behavior. It should start positive and converge to zero.
+A negative starting value indicates that the heat loss is faster than the heat
+up, this means the system is asymmetrical. The calibration will still be
+successful but reserves to counter disturbances might be low.</p>
+<h2 id="advanced-manual-calibration">Advanced / Manual Calibration<a class="headerlink" href="#advanced-manual-calibration" title="Permanent link">&para;</a></h2>
+<p>Many methods exist for calculating control parameters, such as Ziegler-Nichols,
+Cohen-Coon, Kappa-Tau, Lambda, and many more. By default, classical
+Ziegler-Nichols parameters are generated. If a user wants to experiment with
+other flavors of Ziegler-Nichols, or Cohen-Coon parameters, they can extract the
+constants from the log as seen below and enter them into this
+<a href="resources/pid_params.xls">spreadsheet</a>.</p>
+<div class="highlight"><pre><span></span><code>Ziegler-Nichols constants: Ku=0.103092 Tu=41.800000
+Cohen-Coon constants: Km=-17.734845 Theta=6.600000 Tau=-10.182680
 </code></pre></div>
 
-<p>then one would record a probe X position of 46.5 and probe Y position
-of 27.</p>
-<p>After recording the probe position, issue a series of G1 commands
-until the nozzle is directly above the mark on the bed. For example,
-one might issue:</p>
-<div class="highlight"><pre><span></span><code>G1 F300 X57 Y30 Z15
+<p>Classic Ziegler-Nichols parameters work in all scenarios. Cohen-Coon parameters
+work better with systems that have a large amount of dead time/delay. For
+example, if a printer has a bed with a large thermal mass that’s slow to heat
+up and stabilize, the Cohen-Coon parameters will generally do a better job at
+controlling it.</p>
+<h2 id="further-readings">Further Readings<a class="headerlink" href="#further-readings" title="Permanent link">&para;</a></h2>
+<h3 id="history">History<a class="headerlink" href="#history" title="Permanent link">&para;</a></h3>
+<p>The first rudimentary PID controller was developed by Elmer Sperry in 1911 to
+automate the control of a ship's rudder. Engineer Nicolas Minorsky published the
+first mathematical analysis of a PID controller in 1922. In 1942, John Ziegler &amp;
+Nathaniel Nichols published their seminal paper, "Optimum Settings for Automatic
+Controllers," which described a trial-and-error method for tuning a PID
+controller, now commonly referred to as the "Ziegler-Nichols method.</p>
+<p>In 1984, Karl Astrom and Tore Hagglund published their paper "Automatic Tuning
+of Simple Regulators with Specifications on Phase and Amplitude Margins". In the
+paper they introduced an automatic tuning method commonly referred to as the
+"Astrom-Hagglund method" or the "relay method".</p>
+<p>In 2019 Brandon Taysom &amp; Carl Sorensen published their paper "Adaptive Relay
+Autotuning under Static and Non-static Disturbances with Application to
+Friction Stir Welding", which laid out a method to generate more accurate
+results from a relay test. This is the PID calibration method currently used by
+Klipper.</p>
+<h3 id="details-of-the-relay-test">Details of the Relay Test<a class="headerlink" href="#details-of-the-relay-test" title="Permanent link">&para;</a></h3>
+<p>As previously mentioned, Klipper uses a relay test for calibration purposes. A
+standard relay test is conceptually simple. You turn the heater’s power on and
+off to get it to oscillate about the target temperature, as seen in the
+following graph.</p>
+<p><img alt="simple relay test" src="img/pid_01.png" /></p>
+<p>The above graph shows a common issue with a standard relay test. If the system
+being calibrated has too much or too little power for the chosen target
+temperature, it will produce biased and asymmetric results. As can be seen
+above, the system spends more time in the off state than on and has a larger
+amplitude above the target temperature than below.</p>
+<p>In an ideal system, both the on and off times and the amplitude above and below
+the target temperature would be the same. 3D printers don’t actively cool the
+hot end or bed, so they can never reach the ideal state.</p>
+<p>The following graph is a relay test based on the methodology laid out by
+Taysom &amp; Sorensen. After each iteration, the data is analyzed and a new maximum
+power setting is calculated. As can be seen, the system starts the test
+asymmetric but ends very symmetric.</p>
+<p><img alt="advanced relay test" src="img/pid_02.png" /></p>
+<p>Asymmetry can be monitored in real time during a calibration run. It can also
+provide insight into how suitable the heater is for the current calibration
+parameters. When asymmetry starts off positive and converges to zero, the
+heater has more than enough power to achieve symmetry for the calibration
+parameters.</p>
+<div class="highlight"><pre><span></span><code>3:12 PM   PID_CALIBRATE HEATER=extruder TARGET=220 TOLERANCE=0.01 WRITE_FILE=1
+3:15 PM   sample:1 pwm:1.0000 asymmetry:3.7519 tolerance:n/a
+3:15 PM   sample:2 pwm:0.6229 asymmetry:0.3348 tolerance:n/a
+3:16 PM   sample:3 pwm:0.5937 asymmetry:0.0840 tolerance:n/a
+3:17 PM   sample:4 pwm:0.5866 asymmetry:0.0169 tolerance:0.4134
+3:18 PM   sample:5 pwm:0.5852 asymmetry:0.0668 tolerance:0.0377
+3:18 PM   sample:6 pwm:0.5794 asymmetry:0.0168 tolerance:0.0142
+3:19 PM   sample:7 pwm:0.5780 asymmetry:-0.1169 tolerance:0.0086
+3:19 PM   PID parameters: pid_Kp=16.538 pid_Ki=0.801 pid_Kd=85.375
+               The SAVE_CONFIG command will update the printer config file
+               with these parameters and restart the printer.
 </code></pre></div>
 
-<p>to move the nozzle to an X position of 57 and Y of 30. Once one finds
-the position directly above the mark, use the <code>GET_POSITION</code> command
-to report that position. This is the nozzle position.</p>
-<p>The x_offset is then the <code>nozzle_x_position - probe_x_position</code> and
-y_offset is similarly the <code>nozzle_y_position - probe_y_position</code>.
-Update the printer.cfg file with the given values, remove the
-tape/marks from the bed, and then issue a <code>RESTART</code> command so that
-the new values take effect.</p>
-<h2 id="calibrating-probe-z-offset">Calibrating probe Z offset<a class="headerlink" href="#calibrating-probe-z-offset" title="Permanent link">&para;</a></h2>
-<p>Providing an accurate probe z_offset is critical to obtaining high
-quality prints. The z_offset is the distance between the nozzle and
-bed when the probe triggers. The Klipper <code>PROBE_CALIBRATE</code> tool can be
-used to obtain this value - it will run an automatic probe to measure
-the probe's Z trigger position and then start a manual probe to obtain
-the nozzle Z height. The probe z_offset will then be calculated from
-these measurements.</p>
-<p>Start by homing the printer and then move the head to a position near
-the center of the bed. Navigate to the OctoPrint terminal tab and run
-the <code>PROBE_CALIBRATE</code> command to start the tool.</p>
-<p>This tool will perform an automatic probe, then lift the head, move
-the nozzle over the location of the probe point, and start the manual
-probe tool. If the nozzle does not move to a position above the
-automatic probe point, then <code>ABORT</code> the manual probe tool and perform
-the XY probe offset calibration described above.</p>
-<p>Once the manual probe tool starts, follow the steps described at
-<a href="Bed_Level.html#the-paper-test">"the paper test"</a>) to determine the
-actual distance between the nozzle and bed at the given location. Once
-those steps are complete one can <code>ACCEPT</code> the position and save the
-results to the config file with:</p>
-<div class="highlight"><pre><span></span><code>SAVE_CONFIG
+<p>When asymmetry starts off negative, It will not converge to zero. If Klipper
+does not error out, the calibration run will complete and provide good PID
+parameters, However the heater is less likely to handle disturbances as well
+as a heater with power in reserve.</p>
+<div class="highlight"><pre><span></span><code>3:36 PM   PID_CALIBRATE HEATER=extruder TARGET=220 TOLERANCE=0.01 WRITE_FILE=1
+3:38 PM   sample:1 pwm:1.0000 asymmetry:-2.1149 tolerance:n/a
+3:39 PM   sample:2 pwm:1.0000 asymmetry:-2.0140 tolerance:n/a
+3:39 PM   sample:3 pwm:1.0000 asymmetry:-1.8811 tolerance:n/a
+3:40 PM   sample:4 pwm:1.0000 asymmetry:-1.8978 tolerance:0.0000
+3:40 PM   PID parameters: pid_Kp=21.231 pid_Ki=1.227 pid_Kd=91.826
+               The SAVE_CONFIG command will update the printer config file
+               with these parameters and restart the printer.
 </code></pre></div>
 
-<p>Note that if a change is made to the printer's motion system, hotend
-position, or probe location then it will invalidate the results of
-PROBE_CALIBRATE.</p>
-<p>If the probe has an X or Y offset and the bed tilt is changed (eg, by
-adjusting bed screws, running DELTA_CALIBRATE, running Z_TILT_ADJUST,
-running QUAD_GANTRY_LEVEL, or similar) then it will invalidate the
-results of PROBE_CALIBRATE. After making any of the above adjustments
-it will be necessary to run PROBE_CALIBRATE again.</p>
-<p>If the results of PROBE_CALIBRATE are invalidated, then any previous
-<a href="Bed_Mesh.html">bed mesh</a> results that were obtained using the probe are
-also invalidated - it will be necessary to rerun BED_MESH_CALIBRATE
-after recalibrating the probe.</p>
-<h2 id="repeatability-check">Repeatability check<a class="headerlink" href="#repeatability-check" title="Permanent link">&para;</a></h2>
-<p>After calibrating the probe X, Y, and Z offsets it is a good idea to
-verify that the probe provides repeatable results. Start by homing the
-printer and then move the head to a position near the center of the
-bed. Navigate to the OctoPrint terminal tab and run the
-<code>PROBE_ACCURACY</code> command.</p>
-<p>This command will run the probe ten times and produce output similar
-to the following:</p>
-<div class="highlight"><pre><span></span><code>Recv: // probe accuracy: at X:0.000 Y:0.000 Z:10.000
-Recv: // and read 10 times with speed of 5 mm/s
-Recv: // probe at -0.003,0.005 is z=2.506948
-Recv: // probe at -0.003,0.005 is z=2.519448
-Recv: // probe at -0.003,0.005 is z=2.519448
-Recv: // probe at -0.003,0.005 is z=2.506948
-Recv: // probe at -0.003,0.005 is z=2.519448
-Recv: // probe at -0.003,0.005 is z=2.519448
-Recv: // probe at -0.003,0.005 is z=2.506948
-Recv: // probe at -0.003,0.005 is z=2.506948
-Recv: // probe at -0.003,0.005 is z=2.519448
-Recv: // probe at -0.003,0.005 is z=2.506948
-Recv: // probe accuracy results: maximum 2.519448, minimum 2.506948, range 0.012500, average 2.513198, median 2.513198, standard deviation 0.006250
-</code></pre></div>
-
-<p>Ideally the tool will report an identical maximum and minimum value.
-(That is, ideally the probe obtains an identical result on all ten
-probes.) However, it's normal for the minimum and maximum values to
-differ by one Z "step distance" or up to 5 microns (.005mm). A "step
-distance" is
-<code>rotation_distance/(full_steps_per_rotation*microsteps)</code>. The distance
-between the minimum and the maximum value is called the range. So, in
-the above example, since the printer uses a Z step distance of .0125,
-a range of 0.012500 would be considered normal.</p>
-<p>If the results of the test show a range value that is greater than 25
-microns (.025mm) then the probe does not have sufficient accuracy for
-typical bed leveling procedures. It may be possible to tune the probe
-speed and/or probe start height to improve the repeatability of the
-probe. The <code>PROBE_ACCURACY</code> command allows one to run tests with
-different parameters to see their impact - see the
-<a href="G-Codes.html#probe_accuracy">G-Codes document</a> for further details. If
-the probe generally obtains repeatable results but has an occasional
-outlier, then it may be possible to account for that by using multiple
-samples on each probe - read the description of the probe <code>samples</code>
-config parameters in the <a href="Config_Reference.html#probe">config reference</a>
-for more details.</p>
-<p>If new probe speed, samples count, or other settings are needed, then
-update the printer.cfg file and issue a <code>RESTART</code> command. If so, it
-is a good idea to
-<a href="#calibrating-probe-z-offset">calibrate the z_offset</a> again. If
-repeatable results can not be obtained then don't use the probe for
-bed leveling. Klipper has several manual probing tools that can be
-used instead - see the <a href="Bed_Level.html">Bed Level document</a> for further
-details.</p>
-<h2 id="location-bias-check">Location Bias Check<a class="headerlink" href="#location-bias-check" title="Permanent link">&para;</a></h2>
-<p>Some probes can have a systemic bias that corrupts the results of the
-probe at certain toolhead locations. For example, if the probe mount
-tilts slightly when moving along the Y axis then it could result in
-the probe reporting biased results at different Y positions.</p>
-<p>This is a common issue with probes on delta printers, however it can
-occur on all printers.</p>
-<p>One can check for a location bias by using the <code>PROBE_CALIBRATE</code>
-command to measuring the probe z_offset at various X and Y locations.
-Ideally, the probe z_offset would be a constant value at every printer
-location.</p>
-<p>For delta printers, try measuring the z_offset at a position near the
-A tower, at a position near the B tower, and at a position near the C
-tower. For cartesian, corexy, and similar printers, try measuring the
-z_offset at positions near the four corners of the bed.</p>
-<p>Before starting this test, first calibrate the probe X, Y, and Z
-offsets as described at the beginning of this document. Then home the
-printer and navigate to the first XY position. Follow the steps at
-<a href="#calibrating-probe-z-offset">calibrating probe Z offset</a> to run the
-<code>PROBE_CALIBRATE</code> command, <code>TESTZ</code> commands, and <code>ACCEPT</code> command, but
-do not run <code>SAVE_CONFIG</code>. Note the reported z_offset found. Then
-navigate to the other XY positions, repeat these <code>PROBE_CALIBRATE</code>
-steps, and note the reported z_offset.</p>
-<p>If the difference between the minimum reported z_offset and the
-maximum reported z_offset is greater than 25 microns (.025mm) then the
-probe is not suitable for typical bed leveling procedures. See the
-<a href="Bed_Level.html">Bed Level document</a> for manual probe alternatives.</p>
-<h2 id="temperature-bias">Temperature Bias<a class="headerlink" href="#temperature-bias" title="Permanent link">&para;</a></h2>
-<p>Many probes have a systemic bias when probing at different
-temperatures. For example, the probe may consistently trigger at a
-lower height when the probe is at a higher temperature.</p>
-<p>It is recommended to run the bed leveling tools at a consistent
-temperature to account for this bias. For example, either always run
-the tools when the printer is at room temperature, or always run the
-tools after the printer has obtained a consistent print temperature.
-In either case, it is a good idea to wait several minutes after the
-desired temperature is reached, so that the printer apparatus is
-consistently at the desired temperature.</p>
-<p>To check for a temperature bias, start with the printer at room
-temperature and then home the printer, move the head to a position
-near the center of the bed, and run the <code>PROBE_ACCURACY</code> command. Note
-the results. Then, without homing or disabling the stepper motors,
-heat the printer nozzle and bed to printing temperature, and run the
-<code>PROBE_ACCURACY</code> command again. Ideally, the command will report
-identical results. As above, if the probe does have a temperature bias
-then be careful to always use the probe at a consistent temperature.</p>
+<h3 id="pid-control-algorithms">Pid Control Algorithms<a class="headerlink" href="#pid-control-algorithms" title="Permanent link">&para;</a></h3>
+<p>Klipper currently supports two control algorithms: Positional and Velocity.
+The fundamental difference between the two algorithms is that the Positional
+algorithm calculates what the PWM value should be for the current time
+interval, and the Velocity algorithm calculates how much the previous PWM
+setting should be changed to get the PWM value for the current time interval.</p>
+<p>Positional is the default algorithm, as it will work in every scenario. The
+Velocity algorithm can provide superior results to the Positional algorithm but
+requires lower noise sensor readings, or a larger smoothing time setting.</p>
+<p>The most noticeable difference between the two algorithms is that for the same
+configuration parameters, velocity control will eliminate or drastically reduce
+overshoot, as seen in the graphs below, as it isn’t susceptible to integral
+wind-up.</p>
+<p><img alt="algorithm comparison" src="img/pid_03.png" /></p>
+<p><img alt="zoomed algorithm comparison" src="img/pid_04.png" /></p>
+<p>In some scenarios Velocity control will also be better at holding the heater at
+its target temperature, and rejecting disturbances. The primary reason for this
+is that velocity control is more like a standard second order differential
+equation. It takes into account position, velocity, and acceleration.</p>
 
               
             </article>
@@ -1576,41 +1531,6 @@ then be careful to always use the probe at a consistent temperature.</p>
       </main>
       
         <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="Delta_Calibrate.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Delta calibration" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Delta calibration
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="BLTouch.html" class="md-footer__link md-footer__link--next" aria-label="Next: BL-Touch" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              BL-Touch
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

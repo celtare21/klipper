@@ -25,6 +25,7 @@ class ExtruderStepper:
         self.stepper.set_stepper_kinematics(self.sk_extruder)
         self.motion_queue = None
         # Register commands
+<<<<<<< HEAD
         self.printer.register_event_handler(
             "klippy:connect", self._handle_connect
         )
@@ -73,6 +74,24 @@ class ExtruderStepper:
             desc=self.cmd_SYNC_STEPPER_TO_EXTRUDER_help,
         )
 
+=======
+        self.printer.register_event_handler("klippy:connect",
+                                            self._handle_connect)
+        gcode = self.printer.lookup_object('gcode')
+        if self.name == 'extruder':
+            gcode.register_mux_command("SET_PRESSURE_ADVANCE", "EXTRUDER", None,
+                                       self.cmd_default_SET_PRESSURE_ADVANCE,
+                                       desc=self.cmd_SET_PRESSURE_ADVANCE_help)
+        gcode.register_mux_command("SET_PRESSURE_ADVANCE", "EXTRUDER",
+                                   self.name, self.cmd_SET_PRESSURE_ADVANCE,
+                                   desc=self.cmd_SET_PRESSURE_ADVANCE_help)
+        gcode.register_mux_command("SET_EXTRUDER_ROTATION_DISTANCE", "EXTRUDER",
+                                   self.name, self.cmd_SET_E_ROTATION_DISTANCE,
+                                   desc=self.cmd_SET_E_ROTATION_DISTANCE_help)
+        gcode.register_mux_command("SYNC_EXTRUDER_MOTION", "EXTRUDER",
+                                   self.name, self.cmd_SYNC_EXTRUDER_MOTION,
+                                   desc=self.cmd_SYNC_EXTRUDER_MOTION_help)
+>>>>>>> d9043345b615a4b64333a006d9f1fd40f386a5e4
     def _handle_connect(self):
         toolhead = self.printer.lookup_object("toolhead")
         toolhead.register_step_generator(self.stepper.generate_steps)
@@ -183,6 +202,7 @@ class ExtruderStepper:
     def cmd_SYNC_EXTRUDER_MOTION(self, gcmd):
         ename = gcmd.get("MOTION_QUEUE")
         self.sync_to_extruder(ename)
+<<<<<<< HEAD
         gcmd.respond_info(
             "Extruder '%s' now syncing with '%s'" % (self.name, ename)
         )
@@ -211,6 +231,10 @@ class ExtruderStepper:
             "Extruder '%s' now syncing with '%s'" % (self.name, ename)
         )
 
+=======
+        gcmd.respond_info("Extruder '%s' now syncing with '%s'"
+                          % (self.name, ename))
+>>>>>>> d9043345b615a4b64333a006d9f1fd40f386a5e4
 
 # Tracking for hotend heater, extrusion motion queue, and extruder stepper
 class PrinterExtruder:
@@ -219,6 +243,7 @@ class PrinterExtruder:
         self.name = config.get_name()
         self.last_position = 0.0
         # Setup hotend heater
+<<<<<<< HEAD
         shared_heater = config.get("shared_heater", None)
         pheaters = self.printer.load_object(config, "heaters")
         gcode_id = "T%d" % (extruder_num,)
@@ -227,6 +252,11 @@ class PrinterExtruder:
         else:
             config.deprecate("shared_heater")
             self.heater = pheaters.lookup_heater(shared_heater)
+=======
+        pheaters = self.printer.load_object(config, 'heaters')
+        gcode_id = 'T%d' % (extruder_num,)
+        self.heater = pheaters.setup_heater(config, gcode_id)
+>>>>>>> d9043345b615a4b64333a006d9f1fd40f386a5e4
         # Setup kinematic checks
         self.nozzle_diameter = config.getfloat("nozzle_diameter", above=0.0)
         filament_diameter = config.getfloat(

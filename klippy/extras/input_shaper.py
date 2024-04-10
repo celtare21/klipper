@@ -22,6 +22,14 @@ class InputShaperParams:
                 shaper_defs.DEFAULT_DAMPING_RATIO, minval=0.,
                 maxval=self.shapers[self.shaper_type].max_damping_ratio)
         self.shaper_freq = config.getfloat('shaper_freq_' + axis, 0., minval=0.)
+        self.motor_damping = config.getfloat(
+            "motor_damping_" + axis,
+            shaper_defs.DEFAULT_DAMPING_RATIO,
+            minval=0.0,
+            maxval=1.0,
+        )
+        self.motor_freq = config.getfloat("motor_freq_" + axis, 0.0, minval=0.0)
+
     def update(self, gcmd):
         axis = self.axis.upper()
         shaper_type = gcmd.get('SHAPER_TYPE', None)
@@ -38,6 +46,12 @@ class InputShaperParams:
         self.shaper_freq = gcmd.get_float('SHAPER_FREQ_' + axis,
                                           self.shaper_freq, minval=0.)
         self.damping_ratio = damping_ratio
+        self.motor_damping = gcmd.get_float(
+            "MOTOR_DAMPING_" + axis, self.motor_damping, minval=0.0, maxval=1.0
+        )
+        self.motor_freq = gcmd.get_float(
+            "MOTOR_FREQ_" + axis, self.motor_freq, minval=0.0
+        )
         self.shaper_type = shaper_type.lower()
     def get_shaper(self):
         if not self.shaper_freq:
@@ -45,12 +59,27 @@ class InputShaperParams:
         else:
             A, T = self.shapers[self.shaper_type].init_func(
                     self.shaper_freq, self.damping_ratio)
+        if self.motor_freq:
+            A, T = shaper_defs.convolve(
+                (A, T),
+                shaper_defs.get_mzv_shaper(self.motor_freq, self.motor_damping),
+            )
         return len(A), A, T
     def get_status(self):
         return collections.OrderedDict([
             ('shaper_type', self.shaper_type),
             ('shaper_freq', '%.3f' % (self.shaper_freq,)),
-            ('damping_ratio', '%.6f' % (self.damping_ratio,))])
+            (
+                "damping_ratio",
+                "%.6f" % (self.damping_ratio,),
+            ),
+            (
+                "motor_damping",
+                "%.6f" % (self.motor_damping,),
+            ),
+            ("motor_freq", "%.3f" % (self.motor_freq,)),
+            ]
+        )
 
 class AxisInputShaper:
     def __init__(self, axis, config):

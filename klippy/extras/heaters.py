@@ -844,14 +844,14 @@ class PrinterHeaters:
             "gcode:request_restart", self.turn_off_all_heaters
         )
         # Register commands
-        self.gcode = self.printer.lookup_object("gcode")
-        self.gcode.register_command(
+        gcode = self.printer.lookup_object("gcode")
+        gcode.register_command(
             "TURN_OFF_HEATERS",
             self.cmd_TURN_OFF_HEATERS,
             desc=self.cmd_TURN_OFF_HEATERS_help,
         )
-        self.gcode.register_command("M105", self.cmd_M105, when_not_ready=True)
-        self.gcode.register_command(
+        gcode.register_command("M105", self.cmd_M105, when_not_ready=True)
+        gcode.register_command(
             "TEMPERATURE_WAIT",
             self.cmd_TEMPERATURE_WAIT,
             desc=self.cmd_TEMPERATURE_WAIT_help,
@@ -961,15 +961,16 @@ class PrinterHeaters:
 
     def _wait_for_temperature(self, heater):
         # Helper to wait on heater.check_busy() and report M105 temperatures
-
         if self.printer.get_start_args().get("debugoutput") is not None:
             return
-
-        def check(eventtime):
-            self.gcode.respond_raw(self._get_temp(eventtime))
-            return heater.check_busy(eventtime)
-
-        self.printer.wait_while(check)
+        toolhead = self.printer.lookup_object("toolhead")
+        gcode = self.printer.lookup_object("gcode")
+        reactor = self.printer.get_reactor()
+        eventtime = reactor.monotonic()
+        while not self.printer.is_shutdown() and heater.check_busy(eventtime):
+            print_time = toolhead.get_last_move_time()
+            gcode.respond_raw(self._get_temp(eventtime))
+            eventtime = reactor.pause(eventtime + 1.0)
 
     def set_temperature(self, heater, temp, wait=False):
         toolhead = self.printer.lookup_object("toolhead")
@@ -996,15 +997,16 @@ class PrinterHeaters:
             sensor = self.heaters[sensor_name]
         else:
             sensor = self.printer.lookup_object(sensor_name)
-
-        def check(eventtime):
-            temp, _ = sensor.get_temp(eventtime)
+        toolhead = self.printer.lookup_object("toolhead")
+        reactor = self.printer.get_reactor()
+        eventtime = reactor.monotonic()
+        while not self.printer.is_shutdown():
+            temp, target = sensor.get_temp(eventtime)
             if temp >= min_temp and temp <= max_temp:
-                return False
+                return
+            print_time = toolhead.get_last_move_time()
             gcmd.respond_raw(self._get_temp(eventtime))
-            return True
-
-        self.printer.wait_while(check)
+            eventtime = reactor.pause(eventtime + 1.0)
 
 
 def load_config(config):

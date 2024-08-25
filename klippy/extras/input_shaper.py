@@ -24,7 +24,7 @@ class InputShaperParams:
         self.shaper_freq = config.getfloat('shaper_freq_' + axis, 0., minval=0.)
         self.motor_damping = config.getfloat(
             "motor_damping_" + axis,
-            shaper_defs.DEFAULT_DAMPING_RATIO,
+            shaper_defs.DEFAULT_MOTOR_DAMPING_RATIO,
             minval=0.0,
             maxval=1.0,
         )

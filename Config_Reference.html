@@ -1037,6 +1037,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#probe_as_z_home" class="md-nav__link">
+    [probe_as_z_home]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#axis_twist_compensation" class="md-nav__link">
     [axis_twist_compensation]
   </a>
@@ -3147,6 +3154,13 @@
           <li class="md-nav__item">
   <a href="#probe_eddy_current" class="md-nav__link">
     [probe_eddy_current]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probe_as_z_home" class="md-nav__link">
+    [probe_as_z_home]
   </a>
   
 </li>
@@ -5840,6 +5854,23 @@ sensor_type: ldc1612
 #   See the &quot;probe&quot; section for information on these parameters.
 </code></pre></div>
 
+<h3 id="probe_as_z_home">[probe_as_z_home]<a class="headerlink" href="#probe_as_z_home" title="Permanent link">&para;</a></h3>
+<p>This tool allows the homing procedure (<code>G28</code>) to use probing (i.e. the same as the <code>PROBE</code> command) so that in some cases the Z axis can be more accurately probed.</p>
+<p>You should use this option if you are occasionally experiencing innacurate homing.</p>
+<p>Configuring this tool will also cause the <code>G28</code> G-Code to emit a console message stating the correction that was performed. You can use this to measure the level of benefit that the tool is providing.</p>
+<p>To enable this tool, add the following configuration section anywhere before either <code>[safe_z_homing]</code> section or the <code>[homing_override]</code> section.</p>
+<p>There is no specific G-Code for this command since it simply alters the behavior of the
+existing standard 'G28' G-Code command.
+See <a href="G-Codes.html#G-Code_commands">command reference</a> for further information.</p>
+<div class="highlight"><pre><span></span><code>[probe_as_z_home]
+#g28_probe_cmd_args:
+#   Optional command arguments passed to the PROBE command while homing.
+#   See [g-code PROBE command](G-Codes.md#probe).
+#   Example:
+#      g28_probe_cmd_args: SAMPLES=3 SAMPLES_TOLERANCE_RETRIES=5
+</code></pre></div>
+
+<p><em>Note: The standing homing procedure is still perofrmed before probing since this is required to ensure safety and compatibility with the probing method since probing requires homing to first be performed</em></p>
 <h3 id="axis_twist_compensation">[axis_twist_compensation]<a class="headerlink" href="#axis_twist_compensation" title="Permanent link">&para;</a></h3>
 <p>A tool to compensate for inaccurate probe readings due to twist in X or Y
 gantry. See the <a href="Axis_Twist_Compensation.html">Axis Twist Compensation Guide</a>

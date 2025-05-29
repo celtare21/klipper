@@ -9,6 +9,7 @@
 #include "gpio.h" // spi_setup
 #include "internal.h" // gpio_peripheral
 #include "sched.h" // sched_shutdown
+#include "board/misc.h" // timer_is_before
 
 struct spi_info {
     SPI_TypeDef *spi;
@@ -113,8 +114,14 @@ spi_prepare(struct spi_config config)
     // Load frequency
     spi->CFG1 = (div << SPI_CFG1_MBR_Pos) | (7 << SPI_CFG1_DSIZE_Pos);
     // Load mode
-    spi->CFG2 = ((mode << SPI_CFG2_CPHA_Pos) | SPI_CFG2_MASTER | SPI_CFG2_SSM
-                 | SPI_CFG2_AFCNTR | SPI_CFG2_SSOE);
+    uint32_t cfg2 = ((mode << SPI_CFG2_CPHA_Pos) | SPI_CFG2_MASTER
+                     | SPI_CFG2_SSM | SPI_CFG2_AFCNTR | SPI_CFG2_SSOE);
+    uint32_t diff = spi->CFG2 ^ cfg2;
+    spi->CFG2 = cfg2;
+    uint32_t end = timer_read_time() + timer_from_us(1);
+    if (diff & SPI_CFG2_CPOL_Msk)
+        while (timer_is_before(timer_read_time(), end))
+            ;
 }
 
 void
@@ -122,6 +129,8 @@ spi_transfer(struct spi_config config, uint8_t receive_data,
              uint8_t len, uint8_t *data)
 {
     uint8_t rdata = 0;
+    uint8_t* wptr = data;
+    uint8_t* end = data + len;
     SPI_TypeDef *spi = config.spi;
 
     spi->CR2 = len << SPI_CR2_TSIZE_Pos;
@@ -129,10 +138,12 @@ spi_transfer(struct spi_config config, uint8_t receive_data,
     spi->CR1 = SPI_CR1_SSI | SPI_CR1_SPE;
     spi->CR1 = SPI_CR1_SSI | SPI_CR1_CSTART | SPI_CR1_SPE;
 
-    while (len--) {
-        writeb((void *)&spi->TXDR, *data);
-        while ((spi->SR & (SPI_SR_RXWNE | SPI_SR_RXPLVL)) == 0)
-            ;
+    while (data < end) {
+        uint32_t sr = spi->SR & (SPI_SR_TXP | SPI_SR_RXP);
+        if ((sr == SPI_SR_TXP) && wptr < end)
+            writeb((void*)&spi->TXDR, *wptr++);
+        if (!(sr & SPI_SR_RXP))
+            continue;
         rdata = readb((void *)&spi->RXDR);
 
         if (receive_data) {

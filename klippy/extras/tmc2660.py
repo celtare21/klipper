@@ -118,8 +118,21 @@ class TMC2660CurrentHelper:
         self.name = config.get_name().split()[-1]
         self.mcu_tmc = mcu_tmc
         self.fields = mcu_tmc.get_fields()
+        self.current = config.getfloat('run_current', minval=0.1,
+                                       maxval=MAX_CURRENT)
         self.sense_resistor = config.getfloat('sense_resistor')
-        self.current = .0
+        vsense, cs = self._calc_current(self.current)
+        self.fields.set_field("cs", cs)
+        self.fields.set_field("vsense", vsense)
+
+        # Register ready/printing handlers
+        self.idle_current_percentage = config.getint(
+            'idle_current_percent', default=100, minval=0, maxval=100)
+        if self.idle_current_percentage < 100:
+            self.printer.register_event_handler("idle_timeout:printing",
+                                                self._handle_printing)
+            self.printer.register_event_handler("idle_timeout:ready",
+                                                self._handle_ready)
 
     def _calc_current_bits(self, current, vsense):
         vref = 0.165 if vsense else 0.310
@@ -144,6 +157,16 @@ class TMC2660CurrentHelper:
                     irun = irun2
         return vsense, irun
 
+    def _handle_printing(self, print_time):
+        print_time -= 0.100 # Schedule slightly before deadline
+        self.printer.get_reactor().register_callback(
+            (lambda ev: self._update_current(self.current, print_time)))
+
+    def _handle_ready(self, print_time):
+        current = self.current * float(self.idle_current_percentage) / 100.
+        self.printer.get_reactor().register_callback(
+            (lambda ev: self._update_current(current, print_time)))
+
     def _update_current(self, current, print_time):
         vsense, cs = self._calc_current(current)
         val = self.fields.set_field("cs", cs)
@@ -154,7 +177,7 @@ class TMC2660CurrentHelper:
             self.mcu_tmc.set_register("DRVCONF", val, print_time)
 
     def get_current(self):
-        return (self.current, None, MAX_CURRENT)
+        return self.current, None, None, MAX_CURRENT
 
     def set_current(self, run_current, hold_current, print_time):
         self.current = run_current

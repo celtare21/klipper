@@ -40,8 +40,7 @@ class ExtruderStepper:
                                    desc=self.cmd_SYNC_EXTRUDER_MOTION_help)
     def _handle_connect(self):
         toolhead = self.printer.lookup_object('toolhead')
-        toolhead.register_step_generator(self.stepper.generate_steps,
-                                         self.stepper.run_active_callbacks)
+        toolhead.register_step_generator(self.stepper.generate_steps)
         self._set_pressure_advance(self.config_pa, self.config_smooth_time)
     def get_status(self, eventtime):
         return {'pressure_advance': self.pressure_advance,

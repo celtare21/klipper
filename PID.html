@@ -13,7 +13,7 @@
     
     
       
-        <title>Slicers - Klipper documentation</title>
+        <title>PID - Klipper documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slicers" class="md-skip">
+        <a href="#pid" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slicers
+              PID
             
           </span>
         </div>
@@ -381,14 +381,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
       
       
@@ -868,101 +866,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Slicers
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="Slicers.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="Slicers.html" class="md-nav__link">
         Slicers
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#set-the-g-code-flavor-to-marlin" class="md-nav__link">
-    Set the G-Code flavor to Marlin
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#klipper-gcode_macro" class="md-nav__link">
-    Klipper gcode_macro
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#large-retraction-settings-may-require-tuning-klipper" class="md-nav__link">
-    Large retraction settings may require tuning Klipper
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#do-not-enable-coasting" class="md-nav__link">
-    Do not enable "coasting"
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#do-not-use-extra-restart-distance-on-simplify3d" class="md-nav__link">
-    Do not use "extra restart distance" on Simplify3d
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#disable-preloadve-on-kisslicer" class="md-nav__link">
-    Disable "PreloadVE" on KISSlicer
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#disable-any-advanced-extruder-pressure-settings" class="md-nav__link">
-    Disable any "advanced extruder pressure" settings
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#start_print-macros" class="md-nav__link">
-    START_PRINT macros
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1434,58 +1342,77 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#set-the-g-code-flavor-to-marlin" class="md-nav__link">
-    Set the G-Code flavor to Marlin
+  <a href="#pid-calibration" class="md-nav__link">
+    PID Calibration
+  </a>
+  
+    <nav class="md-nav" aria-label="PID Calibration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preparing-the-calibration" class="md-nav__link">
+    Preparing the Calibration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#choosing-the-right-pid-algorithm" class="md-nav__link">
+    Choosing the right PID Algorithm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-the-pid-calibration" class="md-nav__link">
+    Running the PID Calibration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-manual-calibration" class="md-nav__link">
+    Advanced / Manual Calibration
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#klipper-gcode_macro" class="md-nav__link">
-    Klipper gcode_macro
+  <a href="#further-readings" class="md-nav__link">
+    Further Readings
+  </a>
+  
+    <nav class="md-nav" aria-label="Further Readings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#history" class="md-nav__link">
+    History
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#large-retraction-settings-may-require-tuning-klipper" class="md-nav__link">
-    Large retraction settings may require tuning Klipper
+        
+          <li class="md-nav__item">
+  <a href="#details-of-the-relay-test" class="md-nav__link">
+    Details of the Relay Test
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#do-not-enable-coasting" class="md-nav__link">
-    Do not enable "coasting"
+        
+          <li class="md-nav__item">
+  <a href="#pid-control-algorithms" class="md-nav__link">
+    Pid Control Algorithms
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#do-not-use-extra-restart-distance-on-simplify3d" class="md-nav__link">
-    Do not use "extra restart distance" on Simplify3d
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#disable-preloadve-on-kisslicer" class="md-nav__link">
-    Disable "PreloadVE" on KISSlicer
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#disable-any-advanced-extruder-pressure-settings" class="md-nav__link">
-    Disable any "advanced extruder pressure" settings
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#start_print-macros" class="md-nav__link">
-    START_PRINT macros
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1501,104 +1428,170 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/Klipper3d/klipper/blob/master/docs/Slicers.md" title="Edit this page" class="md-content__button md-icon">
+<a href="https://github.com/Klipper3d/klipper/blob/master/docs/PID.md" title="Edit this page" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
-<h1 id="slicers">Slicers<a class="headerlink" href="#slicers" title="Permanent link">&para;</a></h1>
-<p>This document provides some tips for configuring a "slicer"
-application for use with Klipper. Common slicers used with Klipper are
-Slic3r, Cura, Simplify3D, etc.</p>
-<h2 id="set-the-g-code-flavor-to-marlin">Set the G-Code flavor to Marlin<a class="headerlink" href="#set-the-g-code-flavor-to-marlin" title="Permanent link">&para;</a></h2>
-<p>Many slicers have an option to configure the "G-Code flavor". The
-default is frequently "Marlin" and that works well with Klipper. The
-"Smoothieware" setting also works well with Klipper.</p>
-<h2 id="klipper-gcode_macro">Klipper gcode_macro<a class="headerlink" href="#klipper-gcode_macro" title="Permanent link">&para;</a></h2>
-<p>Slicers will often allow one to configure "Start G-Code" and "End
-G-Code" sequences. It is often convenient to define custom macros in
-the Klipper config file instead - such as: <code>[gcode_macro START_PRINT]</code>
-and <code>[gcode_macro END_PRINT]</code>. Then one can just run START_PRINT and
-END_PRINT in the slicer's configuration. Defining these actions in the
-Klipper configuration may make it easier to tweak the printer's start
-and end steps as changes do not require re-slicing.</p>
-<p>See <a href="https://github.com/Klipper3d/klipper/blob/master/config/sample-macros.cfg">sample-macros.cfg</a> for example
-START_PRINT and END_PRINT macros.</p>
-<p>See the <a href="Config_Reference.html#gcode_macro">config reference</a> for
-details on defining a gcode_macro.</p>
-<h2 id="large-retraction-settings-may-require-tuning-klipper">Large retraction settings may require tuning Klipper<a class="headerlink" href="#large-retraction-settings-may-require-tuning-klipper" title="Permanent link">&para;</a></h2>
-<p>The maximum speed and acceleration of retraction moves are controlled
-in Klipper by the <code>max_extrude_only_velocity</code> and
-<code>max_extrude_only_accel</code> config settings. These settings have a
-default value that should work well on many printers. However, if one
-has configured a large retraction in the slicer (eg, 5mm or greater)
-then one may find they limit the desired speed of retractions.</p>
-<p>If using a large retraction, consider tuning Klipper's
-<a href="Pressure_Advance.html">pressure advance</a> instead. Otherwise, if one
-finds the toolhead seems to "pause" during retraction and priming,
-then consider explicitly defining <code>max_extrude_only_velocity</code> and
-<code>max_extrude_only_accel</code> in the Klipper config file.</p>
-<h2 id="do-not-enable-coasting">Do not enable "coasting"<a class="headerlink" href="#do-not-enable-coasting" title="Permanent link">&para;</a></h2>
-<p>The "coasting" feature is likely to result in poor quality prints with
-Klipper. Consider using Klipper's
-<a href="Pressure_Advance.html">pressure advance</a> instead.</p>
-<p>Specifically, if the slicer dramatically changes the extrusion rate
-between moves then Klipper will perform deceleration and acceleration
-between moves. This is likely to make blobbing worse, not better.</p>
-<p>In contrast, it is okay (and often helpful) to use a slicer's
-"retract" setting, "wipe" setting, and/or "wipe on retract" setting.</p>
-<h2 id="do-not-use-extra-restart-distance-on-simplify3d">Do not use "extra restart distance" on Simplify3d<a class="headerlink" href="#do-not-use-extra-restart-distance-on-simplify3d" title="Permanent link">&para;</a></h2>
-<p>This setting can cause dramatic changes to extrusion rates which can
-trigger Klipper's maximum extrusion cross-section check. Consider
-using Klipper's <a href="Pressure_Advance.html">pressure advance</a> or the regular
-Simplify3d retract setting instead.</p>
-<h2 id="disable-preloadve-on-kisslicer">Disable "PreloadVE" on KISSlicer<a class="headerlink" href="#disable-preloadve-on-kisslicer" title="Permanent link">&para;</a></h2>
-<p>If using KISSlicer slicing software then set "PreloadVE" to
-zero. Consider using Klipper's <a href="Pressure_Advance.html">pressure advance</a>
-instead.</p>
-<h2 id="disable-any-advanced-extruder-pressure-settings">Disable any "advanced extruder pressure" settings<a class="headerlink" href="#disable-any-advanced-extruder-pressure-settings" title="Permanent link">&para;</a></h2>
-<p>Some slicers advertise an "advanced extruder pressure" capability. It
-is recommended to keep these options disabled when using Klipper as
-they are likely to result in poor quality prints. Consider using
-Klipper's <a href="Pressure_Advance.html">pressure advance</a> instead.</p>
-<p>Specifically, these slicer settings can instruct the firmware to make
-wild changes to the extrusion rate in the hope that the firmware will
-approximate those requests and the printer will roughly obtain a
-desirable extruder pressure. Klipper, however, utilizes precise
-kinematic calculations and timing. When Klipper is commanded to make
-significant changes to the extrusion rate it will plan out the
-corresponding changes to velocity, acceleration, and extruder
-movement - which is not the slicer's intent. The slicer may even
-command excessive extrusion rates to the point that it triggers
-Klipper's maximum extrusion cross-section check.</p>
-<p>In contrast, it is okay (and often helpful) to use a slicer's
-"retract" setting, "wipe" setting, and/or "wipe on retract" setting.</p>
-<h2 id="start_print-macros">START_PRINT macros<a class="headerlink" href="#start_print-macros" title="Permanent link">&para;</a></h2>
-<p>When using a START_PRINT macro or similar, it is useful to sometimes
-pass through parameters from the slicer variables to the macro.</p>
-<p>In Cura, to pass through temperatures, the following start gcode
-would be used:</p>
-<div class="highlight"><pre><span></span><code>START_PRINT BED_TEMP={material_bed_temperature_layer_0} EXTRUDER_TEMP={material_print_temperature_layer_0}
+<h1 id="pid">PID<a class="headerlink" href="#pid" title="Permanent link">&para;</a></h1>
+<p>PID control is a widely used control method in the 3D printing world.
+It’s ubiquitous when it comes to temperature control, be it with heaters to
+generate heat or fans to remove heat. This document aims to provide a
+high-level overview of what PID is and how to use it best in Klipper.</p>
+<h2 id="pid-calibration">PID Calibration<a class="headerlink" href="#pid-calibration" title="Permanent link">&para;</a></h2>
+<h3 id="preparing-the-calibration">Preparing the Calibration<a class="headerlink" href="#preparing-the-calibration" title="Permanent link">&para;</a></h3>
+<p>When a calibration test is performed external influences should be minimized as
+much as possible:</p>
+<ul>
+<li>Turn off fans</li>
+<li>Turn off chamber heaters</li>
+<li>Turn off the extruder heater when calibrating the bed and vice versa</li>
+<li>Avoid external disturbances like drafts etc</li>
+</ul>
+<h3 id="choosing-the-right-pid-algorithm">Choosing the right PID Algorithm<a class="headerlink" href="#choosing-the-right-pid-algorithm" title="Permanent link">&para;</a></h3>
+<p>Klipper offers two different PID algorithms: Positional and Velocity</p>
+<ul>
+<li>Positional (<code>pid</code>)
+    * The standard algorithm
+    * Very robust against noisy temperature readings
+    * Can cause overshoots
+    * Insufficient target control in edge cases</li>
+<li>Velocity (<code>pid_v</code>)
+    * No overshoot
+    * Better target control in certain scenarios
+    * More susceptible to noisy sensors
+    * Might require larger smoothing time constants</li>
+</ul>
+<p>Refer to the <a href="Config_Reference.html#extruder">control statement</a> in the
+Configuration Reference.</p>
+<h3 id="running-the-pid-calibration">Running the PID Calibration<a class="headerlink" href="#running-the-pid-calibration" title="Permanent link">&para;</a></h3>
+<p>The PID calibration is invoked via the <a href="G-Codes.html#pid_calibrate">PID_CALIBRATE</a> command.
+This command will heat up the respective  heater and let it cool down around
+the target temperature in multiple cycles to determine the needed
+parameters.</p>
+<p>Such a calibration cycles looks like the following snippet:</p>
+<div class="highlight"><pre><span></span><code>3:12 PM   PID_CALIBRATE HEATER=extruder TARGET=220 TOLERANCE=0.01 WRITE_FILE=1
+3:15 PM   sample:1 pwm:1.0000 asymmetry:3.7519 tolerance:n/a
+3:15 PM   sample:2 pwm:0.6229 asymmetry:0.3348 tolerance:n/a
+3:16 PM   sample:3 pwm:0.5937 asymmetry:0.0840 tolerance:n/a
+3:17 PM   sample:4 pwm:0.5866 asymmetry:0.0169 tolerance:0.4134
+3:18 PM   sample:5 pwm:0.5852 asymmetry:0.0668 tolerance:0.0377
+3:18 PM   sample:6 pwm:0.5794 asymmetry:0.0168 tolerance:0.0142
+3:19 PM   sample:7 pwm:0.5780 asymmetry:-0.1169 tolerance:0.0086
+3:19 PM   PID parameters: pid_Kp=16.538 pid_Ki=0.801 pid_Kd=85.375
+               The SAVE_CONFIG command will update the printer config file
+               with these parameters and restart the printer.
 </code></pre></div>
 
-<p>In slic3r derivatives such as PrusaSlicer and SuperSlicer, the
-following would be used:</p>
-<div class="highlight"><pre><span></span><code>START_PRINT EXTRUDER_TEMP=[first_layer_temperature] BED_TEMP=[first_layer_bed_temperature]
+<p>Note the <code>asymmetry</code> information. It provides an indication if the heater's
+power is sufficient to ensure a symmetrical "heat up" versus "cool down /
+heat loss" behavior. It should start positive and converge to zero.
+A negative starting value indicates that the heat loss is faster than the heat
+up, this means the system is asymmetrical. The calibration will still be
+successful but reserves to counter disturbances might be low.</p>
+<h2 id="advanced-manual-calibration">Advanced / Manual Calibration<a class="headerlink" href="#advanced-manual-calibration" title="Permanent link">&para;</a></h2>
+<p>Many methods exist for calculating control parameters, such as Ziegler-Nichols,
+Cohen-Coon, Kappa-Tau, Lambda, and many more. By default, classical
+Ziegler-Nichols parameters are generated. If a user wants to experiment with
+other flavors of Ziegler-Nichols, or Cohen-Coon parameters, they can extract the
+constants from the log as seen below and enter them into this
+<a href="resources/pid_params.xls">spreadsheet</a>.</p>
+<div class="highlight"><pre><span></span><code>Ziegler-Nichols constants: Ku=0.103092 Tu=41.800000
+Cohen-Coon constants: Km=-17.734845 Theta=6.600000 Tau=-10.182680
 </code></pre></div>
 
-<p>Also note that these slicers will insert their own heating codes when
-certain conditions are not met. In Cura, the existence of the
-<code>{material_bed_temperature_layer_0}</code> and <code>{material_print_temperature_layer_0}</code>
-variables is enough to mitigate this. In slic3r derivatives,
-you would use:</p>
-<div class="highlight"><pre><span></span><code>M140 S0
-M104 S0
+<p>Classic Ziegler-Nichols parameters work in all scenarios. Cohen-Coon parameters
+work better with systems that have a large amount of dead time/delay. For
+example, if a printer has a bed with a large thermal mass that’s slow to heat
+up and stabilize, the Cohen-Coon parameters will generally do a better job at
+controlling it.</p>
+<h2 id="further-readings">Further Readings<a class="headerlink" href="#further-readings" title="Permanent link">&para;</a></h2>
+<h3 id="history">History<a class="headerlink" href="#history" title="Permanent link">&para;</a></h3>
+<p>The first rudimentary PID controller was developed by Elmer Sperry in 1911 to
+automate the control of a ship's rudder. Engineer Nicolas Minorsky published the
+first mathematical analysis of a PID controller in 1922. In 1942, John Ziegler &amp;
+Nathaniel Nichols published their seminal paper, "Optimum Settings for Automatic
+Controllers," which described a trial-and-error method for tuning a PID
+controller, now commonly referred to as the "Ziegler-Nichols method.</p>
+<p>In 1984, Karl Astrom and Tore Hagglund published their paper "Automatic Tuning
+of Simple Regulators with Specifications on Phase and Amplitude Margins". In the
+paper they introduced an automatic tuning method commonly referred to as the
+"Astrom-Hagglund method" or the "relay method".</p>
+<p>In 2019 Brandon Taysom &amp; Carl Sorensen published their paper "Adaptive Relay
+Autotuning under Static and Non-static Disturbances with Application to
+Friction Stir Welding", which laid out a method to generate more accurate
+results from a relay test. This is the PID calibration method currently used by
+Klipper.</p>
+<h3 id="details-of-the-relay-test">Details of the Relay Test<a class="headerlink" href="#details-of-the-relay-test" title="Permanent link">&para;</a></h3>
+<p>As previously mentioned, Klipper uses a relay test for calibration purposes. A
+standard relay test is conceptually simple. You turn the heater’s power on and
+off to get it to oscillate about the target temperature, as seen in the
+following graph.</p>
+<p><img alt="simple relay test" src="img/pid_01.png" /></p>
+<p>The above graph shows a common issue with a standard relay test. If the system
+being calibrated has too much or too little power for the chosen target
+temperature, it will produce biased and asymmetric results. As can be seen
+above, the system spends more time in the off state than on and has a larger
+amplitude above the target temperature than below.</p>
+<p>In an ideal system, both the on and off times and the amplitude above and below
+the target temperature would be the same. 3D printers don’t actively cool the
+hot end or bed, so they can never reach the ideal state.</p>
+<p>The following graph is a relay test based on the methodology laid out by
+Taysom &amp; Sorensen. After each iteration, the data is analyzed and a new maximum
+power setting is calculated. As can be seen, the system starts the test
+asymmetric but ends very symmetric.</p>
+<p><img alt="advanced relay test" src="img/pid_02.png" /></p>
+<p>Asymmetry can be monitored in real time during a calibration run. It can also
+provide insight into how suitable the heater is for the current calibration
+parameters. When asymmetry starts off positive and converges to zero, the
+heater has more than enough power to achieve symmetry for the calibration
+parameters.</p>
+<div class="highlight"><pre><span></span><code>3:12 PM   PID_CALIBRATE HEATER=extruder TARGET=220 TOLERANCE=0.01 WRITE_FILE=1
+3:15 PM   sample:1 pwm:1.0000 asymmetry:3.7519 tolerance:n/a
+3:15 PM   sample:2 pwm:0.6229 asymmetry:0.3348 tolerance:n/a
+3:16 PM   sample:3 pwm:0.5937 asymmetry:0.0840 tolerance:n/a
+3:17 PM   sample:4 pwm:0.5866 asymmetry:0.0169 tolerance:0.4134
+3:18 PM   sample:5 pwm:0.5852 asymmetry:0.0668 tolerance:0.0377
+3:18 PM   sample:6 pwm:0.5794 asymmetry:0.0168 tolerance:0.0142
+3:19 PM   sample:7 pwm:0.5780 asymmetry:-0.1169 tolerance:0.0086
+3:19 PM   PID parameters: pid_Kp=16.538 pid_Ki=0.801 pid_Kd=85.375
+               The SAVE_CONFIG command will update the printer config file
+               with these parameters and restart the printer.
 </code></pre></div>
 
-<p>before the macro call. Also note that SuperSlicer has a
-"custom gcode only" button option, which achieves the same outcome.</p>
-<p>An example of a START_PRINT macro using these parameters can
-be found in config/sample-macros.cfg</p>
+<p>When asymmetry starts off negative, It will not converge to zero. If Klipper
+does not error out, the calibration run will complete and provide good PID
+parameters, However the heater is less likely to handle disturbances as well
+as a heater with power in reserve.</p>
+<div class="highlight"><pre><span></span><code>3:36 PM   PID_CALIBRATE HEATER=extruder TARGET=220 TOLERANCE=0.01 WRITE_FILE=1
+3:38 PM   sample:1 pwm:1.0000 asymmetry:-2.1149 tolerance:n/a
+3:39 PM   sample:2 pwm:1.0000 asymmetry:-2.0140 tolerance:n/a
+3:39 PM   sample:3 pwm:1.0000 asymmetry:-1.8811 tolerance:n/a
+3:40 PM   sample:4 pwm:1.0000 asymmetry:-1.8978 tolerance:0.0000
+3:40 PM   PID parameters: pid_Kp=21.231 pid_Ki=1.227 pid_Kd=91.826
+               The SAVE_CONFIG command will update the printer config file
+               with these parameters and restart the printer.
+</code></pre></div>
+
+<h3 id="pid-control-algorithms">Pid Control Algorithms<a class="headerlink" href="#pid-control-algorithms" title="Permanent link">&para;</a></h3>
+<p>Klipper currently supports two control algorithms: Positional and Velocity.
+The fundamental difference between the two algorithms is that the Positional
+algorithm calculates what the PWM value should be for the current time
+interval, and the Velocity algorithm calculates how much the previous PWM
+setting should be changed to get the PWM value for the current time interval.</p>
+<p>Positional is the default algorithm, as it will work in every scenario. The
+Velocity algorithm can provide superior results to the Positional algorithm but
+requires lower noise sensor readings, or a larger smoothing time setting.</p>
+<p>The most noticeable difference between the two algorithms is that for the same
+configuration parameters, velocity control will eliminate or drastically reduce
+overshoot, as seen in the graphs below, as it isn’t susceptible to integral
+wind-up.</p>
+<p><img alt="algorithm comparison" src="img/pid_03.png" /></p>
+<p><img alt="zoomed algorithm comparison" src="img/pid_04.png" /></p>
+<p>In some scenarios Velocity control will also be better at holding the heater at
+its target temperature, and rejecting disturbances. The primary reason for this
+is that velocity control is more like a standard second order differential
+equation. It takes into account position, velocity, and acceleration.</p>
 
               
             </article>
@@ -1613,41 +1606,6 @@ be found in config/sample-macros.cfg</p>
       </main>
       
         <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="Multi_MCU_Homing.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Multiple Micro-controller Homing and Probing" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Multiple Micro-controller Homing and Probing
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="Skew_Correction.html" class="md-footer__link md-footer__link--next" aria-label="Next: Skew correction" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Skew correction
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
